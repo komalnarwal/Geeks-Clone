@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To - Do - List</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color:  #f1f1f1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .taskValue {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      #inputBox {
+        padding: 10px 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        flex: 1;
+        margin-right: 10px;
+        font-size: 1.8rem;
+      }
+      #addTask {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.8rem;
+      }
+      #addTask:hover {
+        background-color: #45a049;
+      }
+      .list-container {
+        margin-top: 20px;
+      }
+      .listItems {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      .listItems li {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 2rem;
+      }
+      .listItems li button {
+        padding: 5px 10px;
+        background-color: #f44336;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.5rem;
+      }
+      .listItems li button:hover {
+        background-color: #d32f2f;
+    
+      }
+      .container h1 {
+        font-size: 2.8rem;
+        color: brown;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .taskList {
+        font-size: 1.8rem;
+        color: brown;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>To - Do - List</h1>
+      <div class="taskValue">
+        <label for="task">
+          <input type="text" id="inputBox" placeholder="Enter Your Task" onload="focus"/>
+        </label>
+        <button id="addTask" onclick="addTask()">Add Task</button>
+      </div>
+      <ul class="list-container listItems"></ul>
+    </div>
+
+    <script>
+      let inputBox = document.getElementById("inputBox");
+      let listContainer = document.querySelector(".list-container");
+
+      function addTask() {
+        const task = inputBox.value;
+        console.log(task);
+        if (!task) {
+          alert("Please write down a task");
+          return;
+        }
+
+        let taskItem = document.createElement("li");
+        taskItem.textContent = task;
+        let deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.onclick = function () {
+          taskItem.remove();
+        };
+
+        taskItem.appendChild(deleteButton);
+        listContainer.appendChild(taskItem);
+        inputBox.value = "";
+    }
+
+
+
+    </script>
+
+  </body>
+</html>
